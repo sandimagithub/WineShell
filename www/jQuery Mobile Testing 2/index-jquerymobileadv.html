@@ -1,0 +1,174 @@
+<!Doctype html>
+<html>
+<head>
+	<title> jQuery Mobile Advanced -WINE APP </title>
+	<link rel="stylesheet" href="libraries/jquery.mobile-1.4.2/jquery.mobile-1.4.2.css"/>
+
+	<link rel="stylesheet" href="css/custom-jquerymobile.css"/>
+</head>
+
+
+<body>
+
+<!-- We comment this out b/c we want to use this template over and over again.  Be sure to indicate something for the id="indicatesomething"
+
+<div data-role="page" id="">
+	<div data-role="header"> </div>
+	<div data-role="content"> </div>
+	<div data-role="footer"></div>
+
+</div> -->
+
+<!-- This is the index (wine list) page! -->
+
+<div data-role="page" id="wine-list">
+	<div data-role="header" data-theme="b"> 
+		<h2> Wine Manager </h2>	
+
+		</div>
+
+<!-- We want to use industry standard -- handlebars
+http://handlebarsjs.com/  (see that we included it as a script below, above our own app-jquerymobile.js file)
+
+we want to use one block of HTML, format it a certain way and the replicate it over and over.
+ -->
+
+
+	<div data-role="content"> 
+		<ul id="wine-list-items" data-role="listview" data-filter="true">
+
+			<!-- We want to replicate this <li> list -- to use as a template -- to repeat over and over, using handlebars.  So we will place this inside the "script" block - down below, specific to handlebars --> 
+			
+
+
+			<!-- We cut out the "li" list and placed it in the bottom of the script file associated with the handlebars.
+			<li>      
+				<a>  
+
+					<img src="http://s3-us-west-2.amazonaws.com/sandboxapi/bouscat.jpg  "/>
+					<h3> Wine Title </h3>
+					<p> This is the wine description </p> 
+				</a>
+				</li> -->
+			</ul>
+
+	</div>
+	
+
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li> <a href="#wine-list" data-icon="heart">Wine List</a> </li>
+				<li> <a href="#add-wine" data-icon="edit">Add Wine</a> </li>  
+
+			</ul>
+		</div>
+	</div>
+
+</div> 
+
+<!-- Add Wine Page (2nd page) -->
+
+<div data-role="page" id="add-wine">
+	<div data-role="header" data-theme="b"> 
+		<a data-role="button" data-icon="back" data-rel="back" data-theme="a">Back </a>
+		<h2> Add Wine </h2>
+
+	</div>
+	<div data-role="content"> 
+		<div class="bold">
+			Wine Name
+		</div>
+		<div class="margin-top-10">
+			<input id="new-wine-name" type="text" placeholder="Name"/>
+
+		<div class="margin-top-10 bold">
+			Country
+		</div>
+
+		<div class="margin-top-10">
+			<input id="new-wine-country" type="text" placeholder="Country"/>
+
+		<div class="margin-top-10 bold">
+			Region
+			</div>
+
+		<div class="margin-top-10">
+			<input id="new-wine-region" type="text" placeholder="Region"/>
+
+		<div class="margin-top-10 bold">
+			Grapes
+			</div>
+
+		<div class="margin-top-10">
+			<input id="new-wine-grapes" type="text" placeholder="Grapes"/>
+
+		<div class="margin-top-10 bold">
+			Year
+			</div>
+
+		<div class="margin-top-10">
+			<input id="new-wine-year" type="tel" placeholder="Year"/>
+
+		<div class="margin-top-10 bold">
+			Price
+			</div>
+
+		<div class="margin-top-10">
+			<input id="new-wine-price" type="range" min="0" max="50" value="0"/>
+
+		<div class="margin-top-10 bold">
+			Description
+		</div>
+
+		<div class="margin-top-10">
+			<textarea id="new-wine-description"></textarea>
+
+		</div>
+
+		<div class="margin-top-10">
+			<a data-role="button" id="add-wine-button" data-theme="b"> Add Wine</a>
+
+		
+
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li> <a href="#wine-list" data-icon="heart">Wine List</a> </li>
+				<li> <a href="#" data-icon="edit">Add Wine</a> </li>  
+
+			</ul>
+		</div>
+	</div>
+</div>
+</div> 
+
+	
+
+<!-- the type that we using in this script is a specific handlebar syntax 
+when we put our "li" into this handlebar script, it will igo inside the handlebar to pull the list out-->
+
+<!-- this is the syntax {{#wines}} specific to handlebars -- javascript. It's telling the handlebars that we want to replicate that set of code below over and over again. -->
+<script type="text/x-template" id="wine-list-template">
+
+{{#wines}}
+<li>      
+				<a>  
+					<img src="{{picture}}"/>
+					<h3> {{name}} </h3>
+					<p> {{description}}</p> 
+				</a>
+</li>
+
+{{/wines}}
+</script>
+
+	<script src="libraries/jquery/jquery.js"> </script>
+	<script src="libraries/jquery.mobile-1.4.2/jquery.mobile-1.4.2.js"></script>
+	<script src="libraries/handlebars/handlebars-v1.3.0.js"></script>
+	<script src="js/app-jquerymobile.js"></script>
+
+
+</body>	
+
+</html>
